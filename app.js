@@ -2,7 +2,7 @@ const path = require("path");
 
 const express = require("express");
 const session = require("express-session");
-const mongodbStore = reqiure("connect-mongodb-session");
+const mongodbStore = require("connect-mongodb-session");
 
 const db = require("./data/database");
 const demoRoutes = require("./routes/demo");
@@ -15,7 +15,7 @@ const MongoDBStore = mongodbStore(session);
 const app = express();
 
 const sessionStore = new MongoDBStore({
-  url: "localhost:27017",
+  url: "mongodb://localhost:27017",
   databaseName: "auth",
   collection: "sessions",
 });
