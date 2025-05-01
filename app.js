@@ -32,6 +32,10 @@ app.use(
     resave: false, //if this was true it will create new session each time the user send a request.
     saveUninitialized: false,
     store: sessionStore,
+    cookie: {
+      maxAge: 60 * 60 * 1000, //this to control whaen the use should log in again.
+      //60*60*1000 = 1 hour
+    },
   })
 );
 

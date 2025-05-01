@@ -3,6 +3,7 @@ const express = require("express");
 const bcrypt = require("bcryptjs");
 
 const db = require("../data/database");
+const { render } = require("ejs");
 
 const router = express.Router();
 
@@ -94,6 +95,10 @@ router.post("/login", async function (req, res) {
 });
 
 router.get("/admin", function (req, res) {
+  if (!req.session.user) {
+    return res.status(401).render("401");
+  }
+
   res.render("admin");
 });
 
